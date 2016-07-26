@@ -1,0 +1,416 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Jarfter Web Service API</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><style>@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200');.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}.right .hljs-comment{color:#969896}.right .css .hljs-class,.right .css .hljs-id,.right .css .hljs-pseudo,.right .hljs-attribute,.right .hljs-regexp,.right .hljs-tag,.right .hljs-variable,.right .html .hljs-doctype,.right .ruby .hljs-constant,.right .xml .hljs-doctype,.right .xml .hljs-pi,.right .xml .hljs-tag .hljs-title{color:#c66}.right .hljs-built_in,.right .hljs-constant,.right .hljs-literal,.right .hljs-number,.right .hljs-params,.right .hljs-pragma,.right .hljs-preprocessor{color:#de935f}.right .css .hljs-rule .hljs-attribute,.right .ruby .hljs-class .hljs-title{color:#f0c674}.right .hljs-header,.right .hljs-inheritance,.right .hljs-name,.right .hljs-string,.right .hljs-value,.right .ruby .hljs-symbol,.right .xml .hljs-cdata{color:#b5bd68}.right .css .hljs-hexcolor,.right .hljs-title{color:#8abeb7}.right .coffeescript .hljs-title,.right .hljs-function,.right .javascript .hljs-title,.right .perl .hljs-sub,.right .python .hljs-decorator,.right .python .hljs-title,.right .ruby .hljs-function .hljs-title,.right .ruby .hljs-title .hljs-keyword{color:#81a2be}.right .hljs-keyword,.right .javascript .hljs-function{color:#b294bb}.right .hljs{display:block;overflow-x:auto;background:#1d1f21;color:#c5c8c6;padding:.5em;-webkit-text-size-adjust:none}.right .coffeescript .javascript,.right .javascript .xml,.right .tex .hljs-formula,.right .xml .css,.right .xml .hljs-cdata,.right .xml .javascript,.right .xml .vbscript{opacity:.5}body{color:black;background:white;font:400 14px / 1.42 'Roboto',Helvetica,sans-serif}header{border-bottom:1px solid #f2f2f2;margin-bottom:12px}h1,h2,h3,h4,h5{color:black;margin:12px 0}h1 .permalink,h2 .permalink,h3 .permalink,h4 .permalink,h5 .permalink{margin-left:0;opacity:0;transition:opacity .25s ease}h1:hover .permalink,h2:hover .permalink,h3:hover .permalink,h4:hover .permalink,h5:hover .permalink{opacity:1}.triple h1 .permalink,.triple h2 .permalink,.triple h3 .permalink,.triple h4 .permalink,.triple h5 .permalink{opacity:.15}.triple h1:hover .permalink,.triple h2:hover .permalink,.triple h3:hover .permalink,.triple h4:hover .permalink,.triple h5:hover .permalink{opacity:.15}h1{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:36px}h2{font:200 36px 'Raleway',Helvetica,sans-serif;font-size:30px}h3{font-size:100%;text-transform:uppercase}h5{font-size:100%;font-weight:normal}p{margin:0 0 10px}p.choices{line-height:1.6}a{color:#428bca;text-decoration:none}li p{margin:0}hr.split{border:0;height:1px;width:100%;padding-left:6px;margin:12px auto;background-image:linear-gradient(to right, rgba(0,0,0,0) 20%, rgba(0,0,0,0.2) 51.4%, rgba(255,255,255,0.2) 51.4%, rgba(255,255,255,0) 80%)}dl dt{float:left;width:130px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}dl dd{margin-left:150px}blockquote{color:rgba(0,0,0,0.5);font-size:15.5px;padding:10px 20px;margin:12px 0;border-left:5px solid #e8e8e8}blockquote p:last-child{margin-bottom:0}pre{background-color:#f5f5f5;padding:12px;border:1px solid #cfcfcf;border-radius:6px;overflow:auto}pre code{color:black;background-color:transparent;padding:0;border:none}code{color:#444;background-color:#f5f5f5;font:'Inconsolata',monospace;padding:1px 4px;border:1px solid #cfcfcf;border-radius:3px}ul,ol{padding-left:2em}table{border-collapse:collapse;border-spacing:0;margin-bottom:12px}table tr:nth-child(2n){background-color:#fafafa}table th,table td{padding:6px 12px;border:1px solid #e6e6e6}.text-muted{opacity:.5}.note,.warning{padding:.3em 1em;margin:1em 0;border-radius:2px;font-size:90%}.note h1,.warning h1,.note h2,.warning h2,.note h3,.warning h3,.note h4,.warning h4,.note h5,.warning h5,.note h6,.warning h6{font-family:200 36px 'Raleway',Helvetica,sans-serif;font-size:135%;font-weight:500}.note p,.warning p{margin:.5em 0}.note{color:black;background-color:#f0f6fb;border-left:4px solid #428bca}.note h1,.note h2,.note h3,.note h4,.note h5,.note h6{color:#428bca}.warning{color:black;background-color:#fbf1f0;border-left:4px solid #c9302c}.warning h1,.warning h2,.warning h3,.warning h4,.warning h5,.warning h6{color:#c9302c}header{margin-top:24px}nav{position:fixed;top:24px;bottom:0;overflow-y:auto}nav .resource-group{padding:0}nav .resource-group .heading{position:relative}nav .resource-group .heading .chevron{position:absolute;top:12px;right:12px;opacity:.5}nav .resource-group .heading a{display:block;color:black;opacity:.7;border-left:2px solid transparent;margin:0}nav .resource-group .heading a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul{list-style-type:none;padding-left:0}nav ul a{display:block;font-size:13px;color:rgba(0,0,0,0.7);padding:8px 12px;border-top:1px solid #d9d9d9;border-left:2px solid transparent;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}nav ul a:hover{text-decoration:none;background-color:bad-color;border-left:2px solid black}nav ul>li{margin:0}nav ul>li:first-child{margin-top:-12px}nav ul>li:last-child{margin-bottom:-12px}nav ul ul a{padding-left:24px}nav ul ul li{margin:0}nav ul ul li:first-child{margin-top:0}nav ul ul li:last-child{margin-bottom:0}nav>div>div>ul>li:first-child>a{border-top:none}.preload *{transition:none !important}.pull-left{float:left}.pull-right{float:right}.badge{display:inline-block;float:right;min-width:10px;min-height:14px;padding:3px 7px;font-size:12px;color:#000;background-color:#f2f2f2;border-radius:10px;margin:-2px 0}.badge.get{color:#70bbe1;background-color:#d9edf7}.badge.head{color:#70bbe1;background-color:#d9edf7}.badge.options{color:#70bbe1;background-color:#d9edf7}.badge.put{color:#f0db70;background-color:#fcf8e3}.badge.patch{color:#f0db70;background-color:#fcf8e3}.badge.post{color:#93cd7c;background-color:#dff0d8}.badge.delete{color:#ce8383;background-color:#f2dede}.collapse-button{float:right}.collapse-button .close{display:none;color:#428bca;cursor:pointer}.collapse-button .open{color:#428bca;cursor:pointer}.collapse-button.show .close{display:inline}.collapse-button.show .open{display:none}.collapse-content{max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}nav{width:220px}.container{max-width:940px;margin-left:auto;margin-right:auto}.container .row .content{margin-left:244px;width:696px}.container .row:after{content:'';display:block;clear:both}.container-fluid nav{width:22%}.container-fluid .row .content{margin-left:24%}.container-fluid.triple nav{width:16.5%;padding-right:1px}.container-fluid.triple .row .content{position:relative;margin-left:16.5%;padding-left:24px}.middle:before,.middle:after{content:'';display:table}.middle:after{clear:both}.middle{box-sizing:border-box;width:51.5%;padding-right:12px}.right{box-sizing:border-box;float:right;width:48.5%;padding-left:12px}.right a{color:#428bca}.right h1,.right h2,.right h3,.right h4,.right h5,.right p,.right div{color:white}.right pre{background-color:#1d1f21;border:1px solid #1d1f21}.right pre code{color:#c5c8c6}.right .description{margin-top:12px}.triple .resource-heading{font-size:125%}.definition{margin-top:12px;margin-bottom:12px}.definition .method{font-weight:bold}.definition .method.get{color:#2e8ab8}.definition .method.head{color:#2e8ab8}.definition .method.options{color:#2e8ab8}.definition .method.post{color:#56b82e}.definition .method.put{color:#b8a22e}.definition .method.patch{color:#b8a22e}.definition .method.delete{color:#b82e2e}.definition .uri{word-break:break-all;word-wrap:break-word}.definition .hostname{opacity:.5}.example-names{background-color:#eee;padding:12px;border-radius:6px}.example-names .tab-button{cursor:pointer;color:black;border:1px solid #ddd;padding:6px;margin-left:12px}.example-names .tab-button.active{background-color:#d5d5d5}.right .example-names{background-color:#444}.right .example-names .tab-button{color:white;border:1px solid #666;border-radius:6px}.right .example-names .tab-button.active{background-color:#5e5e5e}#nav-background{position:fixed;left:0;top:0;bottom:0;width:16.5%;padding-right:14.4px;background-color:#fbfbfb;border-right:1px solid #f0f0f0;z-index:-1}#right-panel-background{position:absolute;right:-12px;top:-12px;bottom:-12px;width:48.6%;background-color:#333;z-index:-1}@media (max-width:1200px){nav{width:198px}.container{max-width:840px}.container .row .content{margin-left:224px;width:606px}}@media (max-width:992px){nav{width:169.4px}.container{max-width:720px}.container .row .content{margin-left:194px;width:526px}}@media (max-width:768px){nav{display:none}.container{width:95%;max-width:none}.container .row .content,.container-fluid .row .content,.container-fluid.triple .row .content{margin-left:auto;margin-right:auto;width:95%}#nav-background{display:none}#right-panel-background{width:48.6%}}.back-to-top{position:fixed;z-index:1;bottom:0;right:24px;padding:4px 8px;color:rgba(0,0,0,0.5);background-color:#f2f2f2;text-decoration:none !important;border-top:1px solid #d9d9d9;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9;border-top-left-radius:3px;border-top-right-radius:3px}.resource-group{padding:12px;margin-bottom:12px;background-color:white;border:1px solid #d9d9d9;border-radius:6px}.resource-group h2.group-heading,.resource-group .heading a{padding:12px;margin:-12px -12px 12px -12px;background-color:#f2f2f2;border-bottom:1px solid #d9d9d9;border-top-left-radius:6px;border-top-right-radius:6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.triple .content .resource-group{padding:0;border:none}.triple .content .resource-group h2.group-heading,.triple .content .resource-group .heading a{margin:0 0 12px 0;border:1px solid #d9d9d9}nav .resource-group .heading a{padding:12px;margin-bottom:0}nav .resource-group .collapse-content{padding:0}.action{margin-bottom:12px;padding:12px 12px 0 12px;overflow:hidden;border:1px solid transparent;border-radius:6px}.action h4.action-heading{padding:6px 12px;margin:-12px -12px 12px -12px;border-bottom:1px solid transparent;border-top-left-radius:6px;border-top-right-radius:6px;overflow:hidden}.action h4.action-heading .name{float:right;font-weight:normal;padding:6px 0}.action h4.action-heading .method{padding:6px 12px;margin-right:12px;border-radius:3px;display:inline-block}.action h4.action-heading .method.get{color:#000;background-color:#337ab7}.action h4.action-heading .method.head{color:#000;background-color:#337ab7}.action h4.action-heading .method.options{color:#000;background-color:#337ab7}.action h4.action-heading .method.put{color:#000;background-color:#ed9c28}.action h4.action-heading .method.patch{color:#000;background-color:#ed9c28}.action h4.action-heading .method.post{color:#000;background-color:#5cb85c}.action h4.action-heading .method.delete{color:#000;background-color:#d9534f}.action h4.action-heading code{color:#444;background-color:#f5f5f5;border-color:#cfcfcf;font-weight:normal;word-break:break-all;display:inline-block;margin-top:2px}.action dl.inner{padding-bottom:2px}.action .title{border-bottom:1px solid white;margin:0 -12px -1px -12px;padding:12px}.action.get{border-color:#bce8f1}.action.get h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.head{border-color:#bce8f1}.action.head h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.options{border-color:#bce8f1}.action.options h4.action-heading{color:#337ab7;background:#d9edf7;border-bottom-color:#bce8f1}.action.post{border-color:#d6e9c6}.action.post h4.action-heading{color:#5cb85c;background:#dff0d8;border-bottom-color:#d6e9c6}.action.put{border-color:#faebcc}.action.put h4.action-heading{color:#ed9c28;background:#fcf8e3;border-bottom-color:#faebcc}.action.patch{border-color:#faebcc}.action.patch h4.action-heading{color:#ed9c28;background:#fcf8e3;border-bottom-color:#faebcc}.action.delete{border-color:#ebccd1}.action.delete h4.action-heading{color:#d9534f;background:#f2dede;border-bottom-color:#ebccd1}</style></head><body class="preload"><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#usage">Usage</a></div><div class="collapse-content"><ul><li><a href="#header-endpoint">Endpoint</a></li><li><a href="#header-parameters">Parameters</a></li><li><a href="#header-mimetype-and-files">Mimetype and files</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#clojure-source-code">Clojure source code</a></div><div class="collapse-content"><ul><li><a href="#header-csv-to-rdf">CSV to RDF</a></li><li><a href="#header-csv-to-csv">CSV to CSV</a></li><li><a href="#header-csv-to-rdf-as-web-service">CSV to RDF as web service</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#jarfter-api-without-database">Jarfter API without database</a></div><div class="collapse-content"><ul><li><a href="#jarfter-api-without-database-compiler-service-without-database-interaction-post"><span class="badge post"><i class="fa fa-plus"></i></span>Compile jar</a></li><li><a href="#jarfter-api-without-database-transformer-service-without-database-interaction-post"><span class="badge post"><i class="fa fa-plus"></i></span>Transform dataset</a></li><li><a href="#jarfter-api-without-database-compiler-service-for-generating-war-file-post"><span class="badge post"><i class="fa fa-plus"></i></span>Compile war</a></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#jarfter-api-with-database">Jarfter API with database</a></div><div class="collapse-content"><ul><li><a href="#jarfter-api-with-database-store-transformations">Store transformations</a><ul><li><a href="#jarfter-api-with-database-store-transformations-put"><span class="badge put"><i class="fa fa-pencil"></i></span>Compile and store</a></li><li><a href="#jarfter-api-with-database-store-transformations-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Download executable</a></li><li><a href="#jarfter-api-with-database-store-transformations-get-1"><span class="badge get"><i class="fa fa-arrow-down"></i></span>List transformations</a></li></ul></li><li><a href="#jarfter-api-with-database-csv-files-put"><span class="badge put"><i class="fa fa-pencil"></i></span>Store CSV</a></li><li><a href="#jarfter-api-with-database-transform-data">Transform data</a><ul><li><a href="#jarfter-api-with-database-transform-data-get"><span class="badge get"><i class="fa fa-arrow-down"></i></span>Transform from database</a></li><li><a href="#jarfter-api-with-database-transform-data-post"><span class="badge post"><i class="fa fa-plus"></i></span>Upload and transform</a></li></ul></li></ul></div></div><div class="resource-group"><div class="heading"><div class="chevron"><i class="open fa fa-angle-down"></i></div><a href="#warfter-api">Warfter API</a></div><div class="collapse-content"><ul><li><a href="#warfter-api-transform-csv-to-rdf-post"><span class="badge post"><i class="fa fa-plus"></i></span>Transform CSV to RDF</a></li></ul></div></div></nav><div class="content"><header><h1 id="top">Jarfter Web Service API</h1></header><section id="usage" class="resource-group"><h2 class="group-heading">Usage <a href="#usage" class="permalink">&para;</a></h2><h3 id="header-endpoint">Endpoint <a class="permalink" href="#header-endpoint" aria-hidden="true">¶</a></h3>
+<p>Currently only deployed behind a firewall and a proxy…</p>
+<p>The paths are based on the home directory of a deployment. The Jarfter services are tested on GlassFish4.1, and when deployed as ‘jarfter.war’ their endpoint is on the following form:</p>
+<pre><code><span class="hljs-symbol">http:</span>/<span class="hljs-regexp">/ip:port/jarfter</span><span class="hljs-regexp">/webresources/</span></code></pre>
+<h3 id="header-parameters">Parameters <a class="permalink" href="#header-parameters" aria-hidden="true">¶</a></h3>
+<p>Parameters are headers unless otherwise stated, meaning they are sent as HTTP headers.</p>
+<h3 id="header-mimetype-and-files">Mimetype and files <a class="permalink" href="#header-mimetype-and-files" aria-hidden="true">¶</a></h3>
+<p>There are four types of files in these web services:</p>
+<ul>
+<li>
+<p>Clojure source code should be of type <code>text/txt</code>, and have to be on the same form as the example shown below.</p>
+</li>
+<li>
+<p>CSV files are input files that will be transformed and should be of the type <code>text/txt</code>. CSV files can also be generated as output.</p>
+</li>
+<li>
+<p>Transformed data are files transformed by the clojure code, and are given solely as responses. Given as type <code>text/txt</code>.</p>
+</li>
+<li>
+<p>Jar files are executable versions of clojure code, they all take a CSV file as input and output transformed data in the rdf, n3, nt, ttl or csv format. The jar files will be of the type <code>application/octet-stream</code>.</p>
+</li>
+</ul>
+</section><section id="clojure-source-code" class="resource-group"><h2 class="group-heading">Clojure source code <a href="#clojure-source-code" class="permalink">&para;</a></h2><p>The Clojure source code needs to be formatted with respect to a template in order to be correctly compiled in a leiningen Grafter project.</p>
+<p>The following source code shows an example made from Grafterizer, with template code on top and bottom and automaticly generated code in the middle.</p>
+<h2 id="header-csv-to-rdf">CSV to RDF <a class="permalink" href="#header-csv-to-rdf" aria-hidden="true">¶</a></h2>
+<p>The following source code shows the template required for Grafterizer for mappings from CSV to RDF. The generated source code should be placed as indicated in the template</p>
+<pre><code><span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">ns</span></span> grafterizer.transformation
+  <span class="hljs-list">(<span class="hljs-attribute">:require</span>
+   <span class="hljs-collection">[grafter.rdf <span class="hljs-attribute">:refer</span> <span class="hljs-collection">[s add prefixer]</span>]</span>
+   <span class="hljs-collection">[grafter.tabular <span class="hljs-attribute">:refer</span> <span class="hljs-attribute">:all</span>]</span>
+   <span class="hljs-collection">[grafter.rdf.io <span class="hljs-attribute">:as</span> ses]</span>
+   <span class="hljs-collection">[grafter.rdf.templater <span class="hljs-attribute">:refer</span> <span class="hljs-collection">[graph]</span>]</span>
+   <span class="hljs-collection">[grafter.tabular.common <span class="hljs-attribute">:refer</span> <span class="hljs-collection">[read-dataset*]</span>]</span>
+   <span class="hljs-collection">[grafter.vocabularies.rdf <span class="hljs-attribute">:refer</span> <span class="hljs-attribute">:all</span>]</span>
+   <span class="hljs-collection">[grafter.vocabularies.foaf <span class="hljs-attribute">:refer</span> <span class="hljs-attribute">:all</span>]</span>
+   <span class="hljs-collection">[grafter.rdf.formats <span class="hljs-attribute">:refer</span> <span class="hljs-attribute">:all</span>]</span>
+   <span class="hljs-collection">[clojure.string <span class="hljs-attribute">:refer</span> <span class="hljs-collection">[trim]</span>]</span>
+   )</span>
+)</span>
+
+
+<span class="hljs-comment">;; &lt;generated source code&gt;</span>
+
+<span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">defn</span></span> import-data
+  <span class="hljs-collection">[quads-seq destination]</span>
+  <span class="hljs-list">(<span class="hljs-keyword">add</span> <span class="hljs-list">(<span class="hljs-keyword">ses/rdf-serializer</span> destination)</span> quads-seq)</span>)</span>
+
+<span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">defn</span></span> my-transformation <span class="hljs-collection">[dataset output]</span>
+  <span class="hljs-list">(<span class="hljs-keyword">import-data</span> 
+    <span class="hljs-list">(<span class="hljs-keyword">make-graph</span> <span class="hljs-list">(<span class="hljs-keyword">my-pipe</span> dataset)</span>)</span>
+  output)</span>
+)</span></code></pre>
+<h2 id="header-csv-to-csv">CSV to CSV <a class="permalink" href="#header-csv-to-csv" aria-hidden="true">¶</a></h2>
+<p>For mappings from CSV to CSV, the template is slightly different, and is as follows:</p>
+<pre><code><span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">ns</span></span> sintef-jarfter-template.core
+  <span class="hljs-list">(<span class="hljs-attribute">:require</span>
+   <span class="hljs-collection">[grafter.rdf <span class="hljs-attribute">:refer</span> <span class="hljs-collection">[s add prefixer]</span>]</span>
+   <span class="hljs-collection">[grafter.tabular <span class="hljs-attribute">:refer</span> <span class="hljs-attribute">:all</span>]</span>
+   <span class="hljs-collection">[grafter.rdf.io <span class="hljs-attribute">:as</span> ses]</span>
+   <span class="hljs-collection">[grafter.rdf.templater <span class="hljs-attribute">:refer</span> <span class="hljs-collection">[graph]</span>]</span>
+   <span class="hljs-collection">[grafter.tabular.common <span class="hljs-attribute">:refer</span> <span class="hljs-collection">[read-dataset*]</span>]</span>
+   <span class="hljs-collection">[grafter.vocabularies.rdf <span class="hljs-attribute">:refer</span> <span class="hljs-attribute">:all</span>]</span>
+   <span class="hljs-collection">[grafter.vocabularies.foaf <span class="hljs-attribute">:refer</span> <span class="hljs-attribute">:all</span>]</span>
+   <span class="hljs-collection">[grafter.rdf.formats <span class="hljs-attribute">:refer</span> <span class="hljs-attribute">:all</span>]</span>
+   <span class="hljs-collection">[clojure.string <span class="hljs-attribute">:refer</span> <span class="hljs-collection">[trim trim-newline triml trimr upper-case lower-case capitalize]</span>]</span>
+   )</span>
+   <span class="hljs-list">(<span class="hljs-attribute">:gen-class</span>)</span>
+)</span>
+
+<span class="hljs-comment">;; &lt;generated source code&gt; - not updated with secure jarfter!</span>
+
+
+<span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">defn</span></span> import-data
+  <span class="hljs-collection">[pipe-result destination]</span>
+  <span class="hljs-list">(<span class="hljs-keyword">write-dataset</span> destination pipe-result)</span>
+)</span>
+
+<span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">defn</span></span> -main <span class="hljs-collection">[&amp; <span class="hljs-collection">[path output]</span>]</span>
+  <span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">when-not</span></span> <span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">and</span></span> path output)</span>
+    <span class="hljs-list">(<span class="hljs-keyword">println</span> <span class="hljs-string">"Usage: lein run &lt;input-file.csv&gt; &lt;output-file.csv&gt;"</span>)</span>
+    <span class="hljs-list">(<span class="hljs-keyword">System/exit</span> <span class="hljs-number">0</span>)</span>)</span>
+
+  
+  <span class="hljs-list">(<span class="hljs-keyword">import-data</span> 
+    <span class="hljs-list">(<span class="hljs-keyword">my-pipe</span> <span class="hljs-list">(<span class="hljs-keyword">read-dataset</span> path)</span>)</span>
+  output)</span>
+
+  <span class="hljs-list">(<span class="hljs-keyword">println</span> path <span class="hljs-string">"=&gt;"</span> output)</span>
+)</span></code></pre>
+<h2 id="header-csv-to-rdf-as-web-service">CSV to RDF as web service <a class="permalink" href="#header-csv-to-rdf-as-web-service" aria-hidden="true">¶</a></h2>
+<p>Input for generating a <a href="#jarfter-api-without-database-compiler-service-for-generating-war-file-post">war file</a> should be on the format below. The result source code will generate a web service that takes CSV as input and gives RDF as output.</p>
+<pre><code><span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">ns</span></span> warfter-ws.core
+  <span class="hljs-list">(<span class="hljs-attribute">:require</span>
+   <span class="hljs-collection">[grafter.rdf <span class="hljs-attribute">:refer</span> <span class="hljs-collection">[s add prefixer]</span>]</span>
+   <span class="hljs-collection">[grafter.tabular <span class="hljs-attribute">:refer</span> <span class="hljs-attribute">:all</span>]</span>
+   <span class="hljs-collection">[grafter.rdf.io <span class="hljs-attribute">:as</span> ses]</span>
+   <span class="hljs-collection">[grafter.rdf.templater <span class="hljs-attribute">:refer</span> <span class="hljs-collection">[graph]</span>]</span>
+   <span class="hljs-collection">[grafter.tabular.common <span class="hljs-attribute">:refer</span> <span class="hljs-collection">[read-dataset*]</span>]</span>
+   <span class="hljs-collection">[grafter.vocabularies.rdf <span class="hljs-attribute">:refer</span> <span class="hljs-attribute">:all</span>]</span>
+   <span class="hljs-collection">[grafter.vocabularies.foaf <span class="hljs-attribute">:refer</span> <span class="hljs-attribute">:all</span>]</span>
+   <span class="hljs-collection">[grafter.rdf.formats <span class="hljs-attribute">:refer</span> <span class="hljs-attribute">:all</span>]</span>
+   <span class="hljs-collection">[clojure.string <span class="hljs-attribute">:refer</span> <span class="hljs-collection">[trim]</span>]</span>
+   )</span>
+   <span class="hljs-list">(<span class="hljs-attribute">:gen-class</span>)</span>
+)</span>
+
+<span class="hljs-comment">;; &lt;generated source code&gt; - not updated with secure jarfter!</span>
+
+<span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">defn</span></span> import-data
+  <span class="hljs-collection">[quads-seq destination ]</span>
+  <span class="hljs-list">(<span class="hljs-keyword">add</span> <span class="hljs-list">(<span class="hljs-keyword">ses/rdf-serializer</span> destination)</span> quads-seq)</span>)</span>
+
+<span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">defn</span></span> warfterTransformer <span class="hljs-collection">[&amp; <span class="hljs-collection">[path output]</span>]</span>
+  <span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">when-not</span></span> <span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">and</span></span> path output)</span>
+    <span class="hljs-list">(<span class="hljs-keyword">println</span> <span class="hljs-string">"Usage: lein run &lt;input-file.csv&gt; &lt;output-file.(nt|rdf|n3|ttl)&gt;"</span>)</span>
+    <span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">str</span></span> <span class="hljs-string">"Something went wrong... I don't know why!\n"</span>)</span>)</span>
+  
+  <span class="hljs-list">(<span class="hljs-keyword">import-data</span>
+    <span class="hljs-list">(<span class="hljs-keyword">make-graph</span> <span class="hljs-list">(<span class="hljs-keyword">my-pipe</span> <span class="hljs-list">(<span class="hljs-keyword">read-datasets</span> path <span class="hljs-attribute">:format</span> <span class="hljs-attribute">:csv</span>)</span>)</span>)</span>
+  output)</span>
+)</span>
+
+<span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">defn</span></span> streamWarfterTransformer <span class="hljs-collection">[&amp; <span class="hljs-collection">[instream outfile]</span>]</span>
+  <span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">when-not</span></span> <span class="hljs-list">(<span class="hljs-keyword"><span class="hljs-built_in">and</span></span> instream outfile)</span>
+    <span class="hljs-list">(<span class="hljs-keyword">println</span> <span class="hljs-string">"Usage: (streamGrafterTransformer instream output)"</span>)</span>
+  )</span>
+  <span class="hljs-list">(<span class="hljs-keyword">import-data</span>
+    <span class="hljs-list">(<span class="hljs-keyword">make-graph</span> <span class="hljs-list">(<span class="hljs-keyword">my-pipe</span> <span class="hljs-list">(<span class="hljs-keyword">read-dataset</span> instream <span class="hljs-attribute">:format</span> <span class="hljs-attribute">:csv</span>)</span>)</span>)</span>
+  outfile)</span>
+)</span></code></pre>
+</section><section id="jarfter-api-without-database" class="resource-group"><h2 class="group-heading">Jarfter API without database <a href="#jarfter-api-without-database" class="permalink">&para;</a></h2><div id="jarfter-api-without-database-compiler-service-without-database-interaction" class="resource"><h3 class="resource-heading">Compiler service without database interaction <a href="#jarfter-api-without-database-compiler-service-without-database-interaction" class="permalink">&nbsp;&para;</a></h3><div id="jarfter-api-without-database-compiler-service-without-database-interaction-post" class="action post"><h4 class="action-heading"><div class="name">Compile jar</div><a href="#jarfter-api-without-database-compiler-service-without-database-interaction-post" class="method post">POST</a><code class="uri">/jarCreatorStandAlone</code></h4><p>Server side pure compiler service.</p>
+<p>Takes Clojure source code as form input ‘clojure’, and compiles a grafter leiningen project based on the Clojure file on the server. The response will consist of the executable JAR as an attachement.</p>
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname"></span>/jarCreatorStandAlone</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+'clojure': <span class="hljs-tag">&lt;<span class="hljs-title">clojure</span> <span class="hljs-attribute">source</span> <span class="hljs-attribute">code</span>&gt;</span>
+}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/octet-stream</span><br><span class="hljs-attribute">Content-Disposition</span>: <span class="hljs-string">attachment; filename=transformation.jar</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code><span class="hljs-tag">&lt;<span class="hljs-title">jar</span> <span class="hljs-attribute">executable</span>&gt;</span></code></pre><div style="height: 1px;"></div></div></div></div></div><div id="jarfter-api-without-database-transformer-service-without-database-interaction" class="resource"><h3 class="resource-heading">Transformer service without database interaction <a href="#jarfter-api-without-database-transformer-service-without-database-interaction" class="permalink">&nbsp;&para;</a></h3><div id="jarfter-api-without-database-transformer-service-without-database-interaction-post" class="action post"><h4 class="action-heading"><div class="name">Transform dataset</div><a href="#jarfter-api-without-database-transformer-service-without-database-interaction-post" class="method post">POST</a><code class="uri">/transformStandAlone</code></h4><p>Server side compile and transform service, without interaction with the database.</p>
+<p>Takes both Clojure code and a dataset in CSV format as input, as well as a output file name. The output filename should have one of the extensions {nt|rdf|n3|ttl|csv}, as the extension controls the output format of the transformation. The output file is sent to the user in the response.</p>
+<p>Internally, this service first compiles the Clojure code to an executable JAR file, and then runs this JAR with the CSV and output filename as arguments.</p>
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname"></span>/transformStandAlone</span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>clojure</dt><dd><code>text/txt</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>Form parameter! Clojure source code.</p>
+</dd><dt>csv</dt><dd><code>text/txt</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>Form parameter! Dataset in CSV format</p>
+</dd><dt>transformed_filename</dt><dd><code>text/txt</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>Form parameter! Output filename. Should have extension as {nt|rdf|n3|ttl|csv}.</p>
+</dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+'clojure': <span class="hljs-tag">&lt;<span class="hljs-title">clojure</span> <span class="hljs-attribute">source</span> <span class="hljs-attribute">code</span>&gt;</span>,
+'csv': <span class="hljs-tag">&lt;<span class="hljs-title">csv</span> <span class="hljs-attribute">dataset</span>&gt;</span>
+'transformed_filename': <span class="hljs-tag">&lt;<span class="hljs-title">output.rdf</span>&gt;</span>
+}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/txt</span><br><span class="hljs-attribute">Content-Disposition</span>: <span class="hljs-string">attachment; filename=&lt;output.rdf&gt;</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code><span class="hljs-tag">&lt;<span class="hljs-title">rdf</span> <span class="hljs-attribute">transformed</span> <span class="hljs-attribute">data</span>&gt;</span></code></pre><div style="height: 1px;"></div></div></div></div></div><div id="jarfter-api-without-database-compiler-service-for-generating-war-file" class="resource"><h3 class="resource-heading">Compiler service for generating war-file <a href="#jarfter-api-without-database-compiler-service-for-generating-war-file" class="permalink">&nbsp;&para;</a></h3><div id="jarfter-api-without-database-compiler-service-for-generating-war-file-post" class="action post"><h4 class="action-heading"><div class="name">Compile war</div><a href="#jarfter-api-without-database-compiler-service-for-generating-war-file-post" class="method post">POST</a><code class="uri">/warfter</code></h4><p>Server side pure compiler service.</p>
+<p>Takes Clojure source code as form input ‘clojure’, and compiles a grafter leiningen project based on the Clojure file on the server. The response will consist of WAR which can be deployed on a server, as attachement.</p>
+<p>The API of the returned war in the <a href="#warfter-api">Warfter section</a>.</p>
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname"></span>/warfter</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/x-www-form-urlencoded</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+'clojure': <span class="hljs-tag">&lt;<span class="hljs-title">clojure</span> <span class="hljs-attribute">source</span> <span class="hljs-attribute">code</span>&gt;</span>
+}</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/octet-stream</span><br><span class="hljs-attribute">Content-Disposition</span>: <span class="hljs-string">attachment; filename=warfter.war</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code><span class="hljs-tag">&lt;<span class="hljs-title">war</span> <span class="hljs-attribute">executable</span>&gt;</span></code></pre><div style="height: 1px;"></div></div></div></div></div></section><section id="jarfter-api-with-database" class="resource-group"><h2 class="group-heading">Jarfter API with database <a href="#jarfter-api-with-database" class="permalink">&para;</a></h2><div id="jarfter-api-with-database-store-transformations" class="resource"><h3 class="resource-heading">Store transformations <a href="#jarfter-api-with-database-store-transformations" class="permalink">&nbsp;&para;</a></h3><div id="jarfter-api-with-database-store-transformations-put" class="action put"><h4 class="action-heading"><div class="name">Compile and store</div><a href="#jarfter-api-with-database-store-transformations-put" class="method put">PUT</a><code class="uri">/jarCreator</code></h4><p>Takes clojure source code as input, compiles it to an executable jar and stores both the source code and the executable in the database.</p>
+<h4>Example URI</h4><div class="definition"><span class="method put">PUT</span>&nbsp;<span class="uri"><span class="hostname"></span>/jarCreator</span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>transformations_name</dt><dd><code>text</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>name of the transformation. Should have .clj ending.</p>
+</dd><dt>transformations_metadata</dt><dd><code>text</code>&nbsp;<span>(optional)</span>&nbsp;<p>Descriptive text to be stored next to the transformation</p>
+</dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/txt; charset=utf-8</span><br><span class="hljs-attribute">transformations_name</span>: <span class="hljs-string">my_transformation.clj</span><br><span class="hljs-attribute">transformations_metadata</span>: <span class="hljs-string">Descriptive text</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code><span class="hljs-tag">&lt;<span class="hljs-title">clojure</span> <span class="hljs-attribute">source</span> <span class="hljs-attribute">code</span>&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">transformations_uri</span>": <span class="hljs-value"><span class="hljs-string">"&lt;transformation uri&gt;"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div><div id="jarfter-api-with-database-store-transformations-get" class="action get"><h4 class="action-heading"><div class="name">Download executable</div><a href="#jarfter-api-with-database-store-transformations-get" class="method get">GET</a><code class="uri">/jarCreator</code></h4><p>Downloads an executable jar from the transformation table in the database, based on the transformation URI.</p>
+<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/jarCreator</span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>transformations_uri</dt><dd><code>text</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>URI associated with a transformation in the database table transformations.</p>
+</dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">transform_uri</span>: <span class="hljs-string">&lt;transformation uri&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/octet-stream</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code><span class="hljs-tag">&lt;<span class="hljs-title">Content</span> <span class="hljs-attribute">of</span> <span class="hljs-attribute">jar</span> <span class="hljs-attribute">file</span>&gt;</span></code></pre><div style="height: 1px;"></div></div></div></div><div id="jarfter-api-with-database-store-transformations-get-1" class="action get"><h4 class="action-heading"><div class="name">List transformations</div><a href="#jarfter-api-with-database-store-transformations-get-1" class="method get">GET</a><code class="uri">/jarCreator/listEntries</code></h4><p>Lists the transformations stored in the database table transformations. The result does not include the executable jar file(s).</p>
+<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/jarCreator/listEntries</span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>transform_uri</dt><dd><code>text</code>&nbsp;<span>(optional)</span>&nbsp;<p>List information on a specific transformation instead of all of them.</p>
+</dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">transform_uri</span>: <span class="hljs-string">&lt;transformation uri&gt;</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">transformations</span>" : <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">clojure</span>" : <span class="hljs-value"><span class="hljs-string">"&lt;Clojure source code&gt;"</span></span>,
+        "<span class="hljs-attribute">metadata</span>" : <span class="hljs-value"><span class="hljs-string">"Descriptive text"</span></span>,
+        "<span class="hljs-attribute">name</span>" : <span class="hljs-value"><span class="hljs-string">"my_transformation.clj"</span></span>,
+        "<span class="hljs-attribute">uri</span>" : <span class="hljs-value"><span class="hljs-string">"&lt;transformations_uri"</span>
+    </span>},
+    ...        
+]
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="jarfter-api-with-database-csv-files" class="resource"><h3 class="resource-heading">CSV files <a href="#jarfter-api-with-database-csv-files" class="permalink">&nbsp;&para;</a></h3><div id="jarfter-api-with-database-csv-files-put" class="action put"><h4 class="action-heading"><div class="name">Store CSV</div><a href="#jarfter-api-with-database-csv-files-put" class="method put">PUT</a><code class="uri">/rawData</code></h4><p>Uploads a dataset of comma separeted values (CSV) and stores it in the database table files.</p>
+<p>Response body includes the uri for the dataset.</p>
+<h4>Example URI</h4><div class="definition"><span class="method put">PUT</span>&nbsp;<span class="uri"><span class="hostname"></span>/rawData</span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>files_filename</dt><dd><code>text</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>File name to be stored with the CSV dataset in the files table in the database.</p>
+</dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/txt; charset=utf-8</span><br><span class="hljs-attribute">files_filename</span>: <span class="hljs-string">dataset.csv</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>name, sex, age,
+Bob, m, 34,
+Alice, f, 27</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/json</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>{
+  "<span class="hljs-attribute">fileid</span>": <span class="hljs-value"><span class="hljs-string">"&lt;file id&gt;"</span>
+</span>}</code></pre><div style="height: 1px;"></div></div></div></div></div><div id="jarfter-api-with-database-transform-data" class="resource"><h3 class="resource-heading">Transform data <a href="#jarfter-api-with-database-transform-data" class="permalink">&nbsp;&para;</a></h3><div id="jarfter-api-with-database-transform-data-get" class="action get"><h4 class="action-heading"><div class="name">Transform from database</div><a href="#jarfter-api-with-database-transform-data-get" class="method get">GET</a><code class="uri">/transform</code></h4><p>Executes a transform associated with header parameter <code>transformations_uri</code> on the dataset associated with the header parameter <code>files_fileid</code> into the format spesified by the extention in the file name found in the header parameter <code>transformed_filename</code>.</p>
+<h4>Example URI</h4><div class="definition"><span class="method get">GET</span>&nbsp;<span class="uri"><span class="hostname"></span>/transform</span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>transformations_uri</dt><dd><code>text</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>URI associated with a transformation in the database table transformations.</p>
+</dd><dt>files_fileid</dt><dd><code>text</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>URI associated with a CSV file in the database table files.</p>
+</dd><dt>transformed_filename</dt><dd><code>text</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>The name of the transformed dataset. The important is the file extension, as the executable is able to transform the data to different formats. Allowed formates (nt|rdf|n3|ttl|csv).</p>
+</dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">transformations_uri</span>: <span class="hljs-string">&lt;transformation uri&gt;</span><br><span class="hljs-attribute">files_fileid</span>: <span class="hljs-string">&lt;file id&gt;</span><br><span class="hljs-attribute">transformed_filename</span>: <span class="hljs-string">output_file.(nt|rdf|n3|ttl|csv)</span></code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/txt</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code><span class="hljs-tag">&lt;<span class="hljs-title">Transformed</span> <span class="hljs-attribute">data</span> <span class="hljs-attribute">set</span>&gt;</span></code></pre><div style="height: 1px;"></div></div></div></div><div id="jarfter-api-with-database-transform-data-post" class="action post"><h4 class="action-heading"><div class="name">Upload and transform</div><a href="#jarfter-api-with-database-transform-data-post" class="method post">POST</a><code class="uri">/transform</code></h4><p>Executes a transform associated with header parameter <code>transformations_uri</code> on the CSV dataset sent in the request into the format spesified by the extention in the file name found in the header parameter <code>transformed_filename</code>.</p>
+<p>The uploaded CSV dataset is stored in the ‘files’ table in the database.</p>
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname"></span>/transform</span></div><div class="title"><strong>URI Parameters</strong><div class="collapse-button show"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><dl class="inner"><dt>transformations_uri</dt><dd><code>text</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>URI associated with a transformation in the database table transformations.</p>
+</dd><dt>files_filename</dt><dd><code>text</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>File name to be stored with the CSV dataset in the files table in the database.</p>
+</dd><dt>transformed_filename</dt><dd><code>text</code>&nbsp;<span class="required">(required)</span>&nbsp;<p>The name of the transformed dataset. The important is the file extension, as the executable is able to transform the data to different formats. Allowed formates (nt|rdf|n3|ttl|csv).</p>
+</dd></dl></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/txt; charset=utf-8</span><br><span class="hljs-attribute">transformations_uri</span>: <span class="hljs-string">&lt;transformation uri&gt;</span><br><span class="hljs-attribute">files_filename</span>: <span class="hljs-string">input_file.csv</span><br><span class="hljs-attribute">transformed_filename</span>: <span class="hljs-string">output_file.(nt|rdf|n3|ttl|csv)</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>name, sex, age,
+Bob, m, 34,
+Alice, f, 27</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/txt</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code><span class="hljs-tag">&lt;<span class="hljs-title">Transformed</span> <span class="hljs-attribute">data</span> <span class="hljs-attribute">set</span>&gt;</span></code></pre><div style="height: 1px;"></div></div></div></div></div></section><section id="warfter-api" class="resource-group"><h2 class="group-heading">Warfter API <a href="#warfter-api" class="permalink">&para;</a></h2><p>The Warfter web service is obtained from <a href="#jarfter-api-without-database-compiler-service-for-generating-war-file-post">Jarfter’s warfter web service</a>, and there are therefore no official endpoint for Warfter.</p>
+<p>Warfter should be deployed by the user, and the endpoint would be thereafter.</p>
+<p>Warfter is tested and confirmed to work when deployed to GlassFish4.1, Jetty-9 and Tomcat-7.</p>
+<div id="warfter-api-transform-csv-to-rdf" class="resource"><h3 class="resource-heading">Transform CSV to RDF <a href="#warfter-api-transform-csv-to-rdf" class="permalink">&nbsp;&para;</a></h3><div id="warfter-api-transform-csv-to-rdf-post" class="action post"><h4 class="action-heading"><div class="name">Transform CSV to RDF</div><a href="#warfter-api-transform-csv-to-rdf-post" class="method post">POST</a><code class="uri">/streamTransform</code></h4><p>Web  service for transforming CSV data to RDF data based on the transformation that was given as input to the warfter web service.</p>
+<h4>Example URI</h4><div class="definition"><span class="method post">POST</span>&nbsp;<span class="uri"><span class="hostname"></span>/streamTransform</span></div><div class="title"><strong>Request</strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/txt</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code>name, sex, age,
+Bob, m, 34,
+Alice, f, 27</code></pre><div style="height: 1px;"></div></div></div><div class="title"><strong>Response&nbsp;&nbsp;<code>200</code></strong><div class="collapse-button"><span class="close">Hide</span><span class="open">Show</span></div></div><div class="collapse-content"><div class="inner"><h5>Headers</h5><pre><code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/txt</span></code></pre><div style="height: 1px;"></div><h5>Body</h5><pre><code><span class="hljs-tag">&lt;<span class="hljs-title">Transformed</span> <span class="hljs-attribute">data</span> <span class="hljs-attribute">set</span>&gt;</span></code></pre><div style="height: 1px;"></div></div></div></div></div></section></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 26 Jul 2016</p><script>/* eslint-env browser */
+/* eslint quotes: [2, "single"] */
+'use strict';
+
+/*
+  Determine if a string ends with another string.
+*/
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
+/*
+  Get a list of direct child elements by class name.
+*/
+function childrenByClass(element, name) {
+  var filtered = [];
+
+  for (var i = 0; i < element.children.length; i++) {
+    var child = element.children[i];
+    var classNames = child.className.split(' ');
+    if (classNames.indexOf(name) !== -1) {
+      filtered.push(child);
+    }
+  }
+
+  return filtered;
+}
+
+/*
+  Get an array [width, height] of the window.
+*/
+function getWindowDimensions() {
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.body,
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+  return [x, y];
+}
+
+/*
+  Collapse or show a request/response example.
+*/
+function toggleCollapseButton(event) {
+    var button = event.target.parentNode;
+    var content = button.parentNode.nextSibling;
+    var inner = content.children[0];
+
+    if (button.className.indexOf('collapse-button') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        // Currently showing, so let's hide it
+        button.className = 'collapse-button';
+        content.style.maxHeight = '0px';
+    } else {
+        // Currently hidden, so let's show it
+        button.className = 'collapse-button show';
+        content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+function toggleTabButton(event) {
+    var i, index;
+    var button = event.target;
+
+    // Get index of the current button.
+    var buttons = childrenByClass(button.parentNode, 'tab-button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            index = i;
+            button.className = 'tab-button active';
+        } else {
+            buttons[i].className = 'tab-button';
+        }
+    }
+
+    // Hide other tabs and show this one.
+    var tabs = childrenByClass(button.parentNode.parentNode, 'tab');
+    for (i = 0; i < tabs.length; i++) {
+        if (i === index) {
+            tabs[i].style.display = 'block';
+        } else {
+            tabs[i].style.display = 'none';
+        }
+    }
+}
+
+/*
+  Collapse or show a navigation menu. It will not be hidden unless it
+  is currently selected or `force` has been passed.
+*/
+function toggleCollapseNav(event, force) {
+    var heading = event.target.parentNode;
+    var content = heading.nextSibling;
+    var inner = content.children[0];
+
+    if (heading.className.indexOf('heading') === -1) {
+      // Clicked without hitting the right element?
+      return;
+    }
+
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+      // Currently showing, so let's hide it, but only if this nav item
+      // is already selected. This prevents newly selected items from
+      // collapsing in an annoying fashion.
+      if (force || window.location.hash && endsWith(event.target.href, window.location.hash)) {
+        content.style.maxHeight = '0px';
+      }
+    } else {
+      // Currently hidden, so let's show it
+      content.style.maxHeight = inner.offsetHeight + 12 + 'px';
+    }
+}
+
+/*
+  Refresh the page after a live update from the server. This only
+  works in live preview mode (using the `--server` parameter).
+*/
+function refresh(body) {
+    document.querySelector('body').className = 'preload';
+    document.body.innerHTML = body;
+
+    // Re-initialize the page
+    init();
+    autoCollapse();
+
+    document.querySelector('body').className = '';
+}
+
+/*
+  Determine which navigation items should be auto-collapsed to show as many
+  as possible on the screen, based on the current window height. This also
+  collapses them.
+*/
+function autoCollapse() {
+  var windowHeight = getWindowDimensions()[1];
+  var itemsHeight = 64; /* Account for some padding */
+  var itemsArray = Array.prototype.slice.call(
+    document.querySelectorAll('nav .resource-group .heading'));
+
+  // Get the total height of the navigation items
+  itemsArray.forEach(function (item) {
+    itemsHeight += item.parentNode.offsetHeight;
+  });
+
+  // Should we auto-collapse any nav items? Try to find the smallest item
+  // that can be collapsed to show all items on the screen. If not possible,
+  // then collapse the largest item and do it again. First, sort the items
+  // by height from smallest to largest.
+  var sortedItems = itemsArray.sort(function (a, b) {
+    return a.parentNode.offsetHeight - b.parentNode.offsetHeight;
+  });
+
+  while (sortedItems.length && itemsHeight > windowHeight) {
+    for (var i = 0; i < sortedItems.length; i++) {
+      // Will collapsing this item help?
+      var itemHeight = sortedItems[i].nextSibling.offsetHeight;
+      if ((itemsHeight - itemHeight <= windowHeight) || i === sortedItems.length - 1) {
+        // It will, so let's collapse it, remove its content height from
+        // our total and then remove it from our list of candidates
+        // that can be collapsed.
+        itemsHeight -= itemHeight;
+        toggleCollapseNav({target: sortedItems[i].children[0]}, true);
+        sortedItems.splice(i, 1);
+        break;
+      }
+    }
+  }
+}
+
+/*
+  Initialize the interactive functionality of the page.
+*/
+function init() {
+    var i, j;
+
+    // Make collapse buttons clickable
+    var buttons = document.querySelectorAll('.collapse-button');
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = toggleCollapseButton;
+
+        // Show by default? Then toggle now.
+        if (buttons[i].className.indexOf('show') !== -1) {
+            toggleCollapseButton({target: buttons[i].children[0]});
+        }
+    }
+
+    var responseCodes = document.querySelectorAll('.example-names');
+    for (i = 0; i < responseCodes.length; i++) {
+        var tabButtons = childrenByClass(responseCodes[i], 'tab-button');
+        for (j = 0; j < tabButtons.length; j++) {
+            tabButtons[j].onclick = toggleTabButton;
+
+            // Show by default?
+            if (j === 0) {
+                toggleTabButton({target: tabButtons[j]});
+            }
+        }
+    }
+
+    // Make nav items clickable to collapse/expand their content.
+    var navItems = document.querySelectorAll('nav .resource-group .heading');
+    for (i = 0; i < navItems.length; i++) {
+        navItems[i].onclick = toggleCollapseNav;
+
+        // Show all by default
+        toggleCollapseNav({target: navItems[i].children[0]});
+    }
+}
+
+// Initial call to set up buttons
+init();
+
+window.onload = function () {
+    autoCollapse();
+    // Remove the `preload` class to enable animations
+    document.querySelector('body').className = '';
+};
+</script></body></html>
