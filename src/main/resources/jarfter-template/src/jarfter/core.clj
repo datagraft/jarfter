@@ -14,7 +14,6 @@
 
   (let [transformation (find-transformation 'my-transformation)]
 
-    (transformation  (read-dataset path) output)
+    (transformation  path output)
   )
-
 )

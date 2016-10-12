@@ -17,6 +17,7 @@
     [clojure.string :refer [capitalize lower-case upper-case trim trim-newline triml trimr]]
     [tabular_functions.datatypes :as datatypes]
     [tabular_functions.pipeline :as new-tabular]
+    [graftwerk.shape.shape-support :refer :all]
     )
   )
 
@@ -38,7 +39,7 @@
 (def transform-gender {"f" (s "female") "m" (s "male")})
 (def make-graph (graph-fn [{:keys [name gender person-uri]}] (graph "http://www.example.no/#/" [person-uri [rdf:a foaf:Person] [foaf:name name] [foaf:gender gender]])))
 
-(defpipe my-pipe "Pipeline to convert tabular persons data into a different tabular format." [data-file] (-> (read-dataset data-file) (make-dataset [:name :gender]) (drop-rows 1) (derive-column :person-uri [:name] alo) (mapc {:gender transform-gender :name string-literal})))
+(defpipe my-pipe "Pipeline to convert tabular persons data into a different tabular format." [data-file] (-> (read-dataset data-file :format :csv) (make-dataset [:name :gender]) (drop-rows 1) (derive-column :person-uri [:name] alo) (mapc {:gender transform-gender :name string-literal})))
 
 (defgraft my-graft "Pipeline to convert the tabular persons data sheet into graph data." my-pipe make-graph)
 

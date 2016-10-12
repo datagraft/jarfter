@@ -11,6 +11,7 @@
                  [ww-geo-coords "1.0"]
                  [clj-time "0.11.0"]
                  [grafterizer/tabular_functions "0.1.2"]
+                 [datagraft/geo-converter "0.0.1"]
                  ]
 
   :main jarfter.core

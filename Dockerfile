@@ -18,6 +18,7 @@ COPY ./src/main/resources/jarfter_config.json /usr/local/var/jarfter_config.json
 # Compile jarfter-template and rename the standalone jar
 WORKDIR /usr/local/var/jarfter-template/
 RUN mvn deploy:deploy-file -Dfile=ww-geo-coords-1.0.jar -DgroupId=ww-geo-coords -DartifactId=ww-geo-coords -Dversion=1.0 -Dpackaging=jar -DlocalRepositoryPath=maven_repository -Durl=file:maven_repository && \
+	mvn deploy:deploy-file -Dfile=geo-converter-0.0.1.jar -DgroupId=datagraft -DartifactId=geo-converter -Dversion=0.0.1 -Dpackaging=jar -DlocalRepositoryPath=maven_repository -Durl=file:maven_repository && \
 		lein uberjar  && \
 		cp /usr/local/var/jarfter-template/target/jarfter-0.1.0-SNAPSHOT-standalone.jar /usr/local/var/jarfter-template/jarfter.jar
 
