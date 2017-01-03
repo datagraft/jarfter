@@ -8,7 +8,6 @@ Structure of the code:
  - Test scripts in python are found in scripts/testPrograms
  - The web services are in a maven projectin jarfter/
 
-
 ## Installing on Ubuntu 14.04
 
 Given a blank Ubuntu image from AWS or a fresh installation, these steps should be sufficient to set-up a Glassfish server with the web services developed in this repo.
@@ -50,4 +49,14 @@ The development of Jarfter has been done on GlassFish4.1.
 
 The Warfter web service has been confirmed to work on GlassFish4.1, Jetty-9 and Tomcat-7.
 
+## Questions or issues?
 
+For posting information about bugs, questions and discussions please use the [Github Issues](https://github.com/datagraft/jarfter/issues) feature.
+
+## Core Team
+
+- [Nikolay Nikolov](https://github.com/nvnikolov)
+- [Ana Tarita](https://github.com/taritaAna)
+
+## License
+Available under the [Eclipse Public License](/LICENSE) (v1.0).
